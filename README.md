@@ -2,7 +2,6 @@
 
 A complete data science and machine learning capstone project analyzing Metro Interstate traffic patterns using advanced analytics, deep learning, and practical recommendation systems.
 
-**Project Repository:** https://github.com/your-username/capstone
 
 ---
 

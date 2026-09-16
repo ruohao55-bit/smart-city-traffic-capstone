@@ -1,0 +1,9 @@
+﻿# Model artifacts (too large for GitHub)
+*.pkl
+*.h5
+*.tflite
+mlruns/
+
+# Notebook outputs
+output_*.ipynb
+executed_*.ipynb
