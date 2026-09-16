@@ -1,0 +1,20 @@
+artifact_path: file:c:/Users/ruohao_gan/Desktop/Capstone/Part 3/mlruns/1/models/m-2bb892d320974de88be870f83d458782/artifacts
+flavors:
+  keras:
+    data: data
+    keras_backend: tensorflow
+    keras_version: 3.15.1
+    save_exported_model: false
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.keras
+    python_version: 3.12.10
+mlflow_version: 3.16.0
+model_id: m-2bb892d320974de88be870f83d458782
+model_size_bytes: 86340
+model_uuid: m-2bb892d320974de88be870f83d458782
+prompts: null
+run_id: 9296f7487dc244368b78e6405f0b3f36
+utc_time_created: '2026-09-16 10:18:30.240706'
