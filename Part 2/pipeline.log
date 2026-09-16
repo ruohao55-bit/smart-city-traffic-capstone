@@ -1,0 +1,227 @@
+2026-09-14 21:28:48 - __main__ - INFO - ======================================================================
+2026-09-14 21:28:48 - __main__ - INFO - Starting data pipeline execution
+2026-09-14 21:28:48 - __main__ - INFO - ======================================================================
+2026-09-14 21:28:48 - __main__ - INFO - 
+--- Step 1: Loading raw CSV file ---
+2026-09-14 21:28:48 - __main__ - INFO - Successfully loaded CSV file: Metro_Interstate_Traffic_Volume.csv (48204 rows, 9 columns)
+2026-09-14 21:28:48 - __main__ - INFO - 
+--- Step 2: Validating data schema ---
+2026-09-14 21:28:48 - __main__ - INFO - Schema validation passed. All 9 expected columns present.
+2026-09-14 21:28:48 - __main__ - INFO - 
+--- Step 3: Removing duplicate rows ---
+2026-09-14 21:28:48 - __main__ - WARNING - Removed 17 duplicate rows. Reason: exact row duplicates found. (48204 rows -> 48187 rows)
+2026-09-14 21:28:48 - __main__ - INFO - 
+--- Step 4: Parsing date_time column ---
+2026-09-14 21:28:48 - __main__ - INFO - Successfully parsed date_time column. Date range: 2012-10-02 09:00:00 to 2018-09-30 23:00:00
+2026-09-14 21:28:48 - __main__ - INFO - 
+--- Step 5: Standardizing categorical values ---
+2026-09-14 21:28:48 - __main__ - INFO - Standardized weather_main column: applied title case to 11 unique values
+2026-09-14 21:28:48 - __main__ - INFO - Standardized weather_description column: applied lowercase to 37 unique values
+2026-09-14 21:28:48 - __main__ - INFO - 
+--- Step 6: Detecting and handling outliers ---
+2026-09-14 21:28:48 - __main__ - WARNING - Detected 10 invalid temperature values (less than 1 Kelvin). Reason: physically impossible sensor readings
+2026-09-14 21:28:48 - __main__ - WARNING - Imputed 4 temperature outliers in 2014-01. Reason: monthly median imputation
+2026-09-14 21:28:48 - __main__ - WARNING - Imputed 6 temperature outliers in 2014-02. Reason: monthly median imputation
+2026-09-14 21:28:48 - __main__ - WARNING - Detected 1 invalid rainfall values (exceeding 9000 mm). Reason: exceed physically plausible range
+2026-09-14 21:28:49 - __main__ - WARNING - Imputed 1 rainfall outliers in 2016-07. Reason: monthly median imputation
+2026-09-14 21:28:49 - __main__ - INFO - 
+Cleaned data saved to Metro_Interstate_Traffic_Volume_cleaned.csv (48187 rows, 9 columns)
+2026-09-14 21:28:49 - __main__ - INFO - 
+======================================================================
+2026-09-14 21:28:49 - __main__ - INFO - Data pipeline execution completed successfully
+2026-09-14 21:28:49 - __main__ - INFO - ======================================================================
+2026-09-14 21:29:38 - __main__ - INFO - ======================================================================
+2026-09-14 21:29:38 - __main__ - INFO - Starting data pipeline execution
+2026-09-14 21:29:38 - __main__ - INFO - ======================================================================
+2026-09-14 21:29:38 - __main__ - INFO - 
+--- Step 1: Loading raw CSV file ---
+2026-09-14 21:29:38 - __main__ - INFO - Successfully loaded CSV file: Metro_Interstate_Traffic_Volume.csv (48204 rows, 9 columns)
+2026-09-14 21:29:38 - __main__ - INFO - 
+--- Step 2: Validating data schema ---
+2026-09-14 21:29:38 - __main__ - INFO - Schema validation passed. All 9 expected columns present.
+2026-09-14 21:29:38 - __main__ - INFO - 
+--- Step 3: Removing duplicate rows ---
+2026-09-14 21:29:38 - __main__ - WARNING - Removed 17 duplicate rows. Reason: exact row duplicates found. (48204 rows -> 48187 rows)
+2026-09-14 21:29:38 - __main__ - INFO - 
+--- Step 4: Parsing date_time column ---
+2026-09-14 21:29:38 - __main__ - INFO - Successfully parsed date_time column. Date range: 2012-10-02 09:00:00 to 2018-09-30 23:00:00
+2026-09-14 21:29:38 - __main__ - INFO - 
+--- Step 5: Standardizing categorical values ---
+2026-09-14 21:29:38 - __main__ - INFO - Standardized weather_main column: applied title case to 11 unique values
+2026-09-14 21:29:38 - __main__ - INFO - Standardized weather_description column: applied lowercase to 37 unique values
+2026-09-14 21:29:38 - __main__ - INFO - 
+--- Step 6: Detecting and handling outliers ---
+2026-09-14 21:29:38 - __main__ - WARNING - Detected 10 invalid temperature values (less than 1 Kelvin). Reason: physically impossible sensor readings
+2026-09-14 21:29:38 - __main__ - WARNING - Imputed 4 temperature outliers in 2014-01. Reason: median value for month 0        False
+1        False
+2        False
+3        False
+4        False
+         ...  
+48199    False
+48200    False
+48201    False
+48202    False
+48203    False
+Name: year_month, Length: 48187, dtype: bool
+2026-09-14 21:29:38 - __main__ - WARNING - Imputed 6 temperature outliers in 2014-02. Reason: median value for month 0        False
+1        False
+2        False
+3        False
+4        False
+         ...  
+48199    False
+48200    False
+48201    False
+48202    False
+48203    False
+Name: year_month, Length: 48187, dtype: bool
+2026-09-14 21:29:38 - __main__ - WARNING - Detected 1 invalid rainfall values (exceeding 9000 mm). Reason: exceed physically plausible range
+2026-09-14 21:29:38 - __main__ - WARNING - Imputed 1 rainfall outliers in 2016-07. Reason: monthly median imputation
+2026-09-14 21:29:39 - __main__ - INFO - 
+Cleaned data saved to Metro_Interstate_Traffic_Volume_cleaned.csv (48187 rows, 9 columns)
+2026-09-14 21:29:39 - __main__ - INFO - 
+======================================================================
+2026-09-14 21:29:39 - __main__ - INFO - Data pipeline execution completed successfully
+2026-09-14 21:29:39 - __main__ - INFO - ======================================================================
+2026-09-16 20:50:00 - __main__ - INFO - ======================================================================
+2026-09-16 20:50:00 - __main__ - INFO - Starting data pipeline execution
+2026-09-16 20:50:00 - __main__ - INFO - ======================================================================
+2026-09-16 20:50:00 - __main__ - INFO - 
+--- Step 1: Loading raw CSV file ---
+2026-09-16 20:50:00 - __main__ - INFO - Successfully loaded CSV file: Metro_Interstate_Traffic_Volume.csv (48204 rows, 9 columns)
+2026-09-16 20:50:00 - __main__ - INFO - 
+--- Step 2: Validating data schema ---
+2026-09-16 20:50:00 - __main__ - INFO - Schema validation passed. All 9 expected columns present.
+2026-09-16 20:50:00 - __main__ - INFO - 
+--- Step 3: Removing duplicate rows ---
+2026-09-16 20:50:00 - __main__ - WARNING - Removed 17 duplicate rows. Reason: exact row duplicates found. (48204 rows -> 48187 rows)
+2026-09-16 20:50:00 - __main__ - INFO - 
+--- Step 4: Parsing date_time column ---
+2026-09-16 20:50:00 - __main__ - INFO - Successfully parsed date_time column. Date range: 2012-10-02 09:00:00 to 2018-09-30 23:00:00
+2026-09-16 20:50:00 - __main__ - INFO - 
+--- Step 5: Standardizing categorical values ---
+2026-09-16 20:50:00 - __main__ - INFO - Standardized weather_main column: applied title case to 11 unique values
+2026-09-16 20:50:00 - __main__ - INFO - Standardized weather_description column: applied lowercase to 37 unique values
+2026-09-16 20:50:00 - __main__ - INFO - 
+--- Step 6: Detecting and handling outliers ---
+2026-09-16 20:50:00 - __main__ - WARNING - Detected 10 invalid temperature values (less than 1 Kelvin). Reason: physically impossible sensor readings
+2026-09-16 20:50:00 - __main__ - WARNING - Imputed 4 temperature outliers in 2014-01. Reason: monthly median imputation
+2026-09-16 20:50:00 - __main__ - WARNING - Imputed 6 temperature outliers in 2014-02. Reason: monthly median imputation
+2026-09-16 20:50:00 - __main__ - WARNING - Detected 1 invalid rainfall values (exceeding 9000 mm). Reason: exceed physically plausible range
+2026-09-16 20:50:00 - __main__ - WARNING - Imputed 1 rainfall outliers in 2016-07. Reason: monthly median imputation
+2026-09-16 20:50:01 - __main__ - INFO - 
+Cleaned data saved to Metro_Interstate_Traffic_Volume_cleaned.csv (48187 rows, 9 columns)
+2026-09-16 20:50:01 - __main__ - INFO - 
+======================================================================
+2026-09-16 20:50:01 - __main__ - INFO - Data pipeline execution completed successfully
+2026-09-16 20:50:01 - __main__ - INFO - ======================================================================
+2026-09-16 20:50:29 - __main__ - INFO - ======================================================================
+2026-09-16 20:50:29 - __main__ - INFO - Starting feature engineering pipeline
+2026-09-16 20:50:29 - __main__ - INFO - ======================================================================
+2026-09-16 20:50:29 - __main__ - INFO - Successfully loaded cleaned data: Metro_Interstate_Traffic_Volume_cleaned.csv
+2026-09-16 20:50:29 - __main__ - INFO - Initial dataset shape: 48187 rows × 9 columns
+2026-09-16 20:50:29 - __main__ - INFO - 
+--- Creating time features ---
+2026-09-16 20:50:29 - __main__ - INFO - Creating time features...
+2026-09-16 20:50:29 - __main__ - DEBUG - Hour range: 0 to 23
+2026-09-16 20:50:29 - __main__ - DEBUG - Day of week range: 0 to 6
+2026-09-16 20:50:29 - __main__ - DEBUG - Weekend records: 13700 out of 48187
+2026-09-16 20:50:29 - __main__ - DEBUG - Hour cyclical encoding: sin range [-1.0000, 1.0000], cos range [-1.0000, 1.0000]
+2026-09-16 20:50:29 - __main__ - DEBUG - Day of week cyclical encoding applied
+2026-09-16 20:50:29 - __main__ - INFO - Time features created: hour, day_of_week, is_weekend, hour_sin, hour_cos, dow_sin, dow_cos
+2026-09-16 20:50:29 - __main__ - INFO - 
+--- Creating weather features ---
+2026-09-16 20:50:29 - __main__ - INFO - Creating weather features...
+2026-09-16 20:50:29 - __main__ - DEBUG - Weather categories encoded: ['weather_Clear', 'weather_Clouds', 'weather_Drizzle', 'weather_Fog', 'weather_Haze', 'weather_Mist', 'weather_Rain', 'weather_Smoke', 'weather_Snow', 'weather_Squall', 'weather_Thunderstorm']
+2026-09-16 20:50:29 - __main__ - DEBUG - Weather category distribution:
+{'Clouds': 15158, 'Clear': 13384, 'Mist': 5949, 'Rain': 5672, 'Snow': 2875, 'Drizzle': 1820, 'Haze': 1360, 'Thunderstorm': 1033, 'Fog': 912, 'Smoke': 20, 'Squall': 4}
+2026-09-16 20:50:29 - __main__ - DEBUG - Clear weather records: 13384 out of 48187
+2026-09-16 20:50:29 - __main__ - DEBUG - Rainy weather records: 5672 out of 48187
+2026-09-16 20:50:29 - __main__ - DEBUG - High cloud coverage records (>75%): 18032 out of 48187
+2026-09-16 20:50:29 - __main__ - DEBUG - Records with precipitation: 3525 out of 48187
+2026-09-16 20:50:29 - __main__ - INFO - Weather features created: weather one-hot encoding, is_clear, is_rainy, high_cloud_coverage, has_precipitation
+2026-09-16 20:50:29 - __main__ - INFO - 
+--- Creating normalized features ---
+2026-09-16 20:50:29 - __main__ - INFO - Creating normalized features...
+2026-09-16 20:50:29 - __main__ - DEBUG - Temperature before scaling - Mean: 281.26, Std: 12.71, Min: 243.39, Max: 310.07
+2026-09-16 20:50:29 - __main__ - DEBUG - Temperature normalized - Mean: 0.000000, Std: 1.000010
+2026-09-16 20:50:29 - __main__ - DEBUG - Traffic volume before scaling - Mean: 3260, Std: 1987, Min: 0, Max: 7280
+2026-09-16 20:50:29 - __main__ - DEBUG - Traffic volume normalized - Mean: -0.000000, Std: 1.000010
+2026-09-16 20:50:29 - __main__ - DEBUG - Cloud coverage before scaling - Mean: 49.37, Std: 39.02, Min: 0.00, Max: 100.00
+2026-09-16 20:50:29 - __main__ - DEBUG - Cloud coverage normalized - Mean: 0.000000, Std: 1.000010
+2026-09-16 20:50:29 - __main__ - INFO - Normalized features created: temp_normalized, traffic_volume_normalized, clouds_all_normalized
+2026-09-16 20:50:29 - __main__ - INFO - 
+--- Creating traffic target variable ---
+2026-09-16 20:50:29 - __main__ - INFO - Creating traffic congestion target variable...
+2026-09-16 20:50:29 - __main__ - DEBUG - Traffic volume quartiles - Q1: 1192, Q2 (Median): 3379, Q3: 4933
+2026-09-16 20:50:29 - __main__ - DEBUG - Congestion category distribution:
+{0: 12047, 1: 12049, 2: 12054, 3: 12037}
+2026-09-16 20:50:29 - __main__ - DEBUG - Light traffic (volume <= 1192): 12047 records
+2026-09-16 20:50:29 - __main__ - DEBUG - Moderate traffic (1192 < volume <= 3379): 12049 records
+2026-09-16 20:50:29 - __main__ - DEBUG - Heavy traffic (3379 < volume <= 4933): 12054 records
+2026-09-16 20:50:29 - __main__ - DEBUG - Very heavy traffic (volume > 4933): 12037 records
+2026-09-16 20:50:29 - __main__ - INFO - Congestion target created: congestion_category (0=Light, 1=Moderate, 2=Heavy, 3=Very Heavy)
+2026-09-16 20:50:29 - __main__ - INFO - Target distribution: {0: np.int64(12047), 1: np.int64(12049), 2: np.int64(12054), 3: np.int64(12037)}
+2026-09-16 20:50:29 - __main__ - INFO - 
+Final dataset shape: 48187 rows × 35 columns
+2026-09-16 20:50:29 - __main__ - INFO - Features added: 26 new columns
+2026-09-16 20:50:30 - __main__ - INFO - 
+Feature-engineered data saved to Metro_Interstate_Traffic_Volume_features.csv
+2026-09-16 20:50:30 - __main__ - INFO - 
+======================================================================
+2026-09-16 20:50:30 - __main__ - INFO - Feature engineering pipeline completed successfully
+2026-09-16 20:50:30 - __main__ - INFO - ======================================================================
+2026-09-16 20:50:38 - __main__ - INFO - ================================================================================
+2026-09-16 20:50:38 - __main__ - INFO - Traffic Analytics Application Started
+2026-09-16 20:50:38 - __main__ - INFO - ================================================================================
+2026-09-16 20:50:38 - __main__ - INFO - Successfully loaded dataset: Metro_Interstate_Traffic_Volume_features.csv
+2026-09-16 20:50:38 - __main__ - INFO - Command invoked: best-times with max_volume=2000
+2026-09-16 20:50:38 - __main__ - INFO - Recommended travel times identified. Best day type: Weekends
+2026-09-16 20:50:38 - __main__ - INFO - Command 'best-times' completed successfully
+2026-09-16 20:50:49 - __main__ - INFO - ======================================================================
+2026-09-16 20:50:49 - __main__ - INFO - Starting visualisation pipeline
+2026-09-16 20:50:49 - __main__ - INFO - ======================================================================
+2026-09-16 20:50:50 - __main__ - INFO - Successfully loaded feature-engineered data: Metro_Interstate_Traffic_Volume_features.csv
+2026-09-16 20:50:50 - __main__ - INFO - Dataset shape: 48187 rows × 35 columns
+2026-09-16 20:50:50 - __main__ - INFO - Output directory ready: visualisations
+2026-09-16 20:50:50 - __main__ - INFO - 
+### Creating Visualizations ###
+2026-09-16 20:50:50 - __main__ - INFO - 
+--- Creating Visualization 1: Traffic Demand by Hour ---
+2026-09-16 20:50:51 - __main__ - DEBUG - Hourly statistics calculated. Hours with data: 24
+2026-09-16 20:50:51 - __main__ - INFO - Figure saved: visualisations/01_traffic_by_hour.png
+2026-09-16 20:50:51 - __main__ - INFO - Interpretation: Peak traffic occurs at hour 16 with average volume 5664
+2026-09-16 20:50:51 - __main__ - INFO - 
+--- Creating Visualization 2: Weekday vs Weekend Traffic ---
+2026-09-16 20:50:52 - __main__ - DEBUG - Weekday traffic - Mean: 3533, Median: 4094
+2026-09-16 20:50:52 - __main__ - DEBUG - Weekend traffic - Mean: 2571, Median: 2674
+2026-09-16 20:50:52 - __main__ - INFO - Figure saved: visualisations/02_weekday_vs_weekend.png
+2026-09-16 20:50:52 - __main__ - INFO - Interpretation: Weekday traffic is 963 vehicles higher than weekends (average)
+2026-09-16 20:50:52 - __main__ - INFO - 
+--- Creating Visualization 3: Temperature vs Traffic ---
+2026-09-16 20:50:56 - __main__ - INFO - Figure saved: visualisations/03_temperature_vs_traffic.png
+2026-09-16 20:50:56 - __main__ - DEBUG - Temperature range: -29.8°C to 36.9°C
+2026-09-16 20:50:56 - __main__ - INFO - Interpretation: Temperature-traffic correlation is 0.132 (weak relationship)
+2026-09-16 20:50:56 - __main__ - INFO - 
+--- Creating Visualization 4: Traffic Distribution ---
+2026-09-16 20:50:57 - __main__ - INFO - Figure saved: visualisations/04_traffic_distribution.png
+2026-09-16 20:50:57 - __main__ - DEBUG - Category distribution: {0: np.int64(12047), 1: np.int64(12049), 2: np.int64(12054), 3: np.int64(12037)}
+2026-09-16 20:50:57 - __main__ - INFO - Interpretation: Traffic is relatively balanced across categories (25% each), indicating good stratification
+2026-09-16 20:50:57 - __main__ - INFO - 
+--- Creating Visualization 5: Hourly Traffic Heatmap ---
+2026-09-16 20:50:57 - __main__ - DEBUG - Heatmap created with shape: (24, 7)
+2026-09-16 20:50:57 - __main__ - INFO - Figure saved: visualisations/05_hourly_heatmap.png
+2026-09-16 20:50:57 - __main__ - DEBUG - Peak hour overall: 16, Peak day overall: Friday
+2026-09-16 20:50:57 - __main__ - INFO - Interpretation: Heaviest traffic hour is 16:00, Peak day is Friday
+2026-09-16 20:50:57 - __main__ - INFO - 
+--- Creating Visualization 6: Weather Impact on Traffic ---
+2026-09-16 20:50:58 - __main__ - DEBUG - Analyzing 8 most common weather conditions
+2026-09-16 20:50:58 - __main__ - INFO - Figure saved: visualisations/06_weather_impact.png
+2026-09-16 20:50:58 - __main__ - DEBUG - Weather impacts (mean traffic): {'Clouds': 3617.989114658926, 'Haze': 3502.1014705882353, 'Rain': 3317.9055007052184, 'Drizzle': 3292.1895604395604, 'Clear': 3055.614465032875, 'Snow': 3016.321391304348, 'Thunderstorm': 2999.4317521781218, 'Mist': 2933.343923348462}
+2026-09-16 20:50:58 - __main__ - INFO - Interpretation: Clouds shows highest average traffic, Mist shows lowest
+2026-09-16 20:50:58 - __main__ - INFO - 
+======================================================================
+2026-09-16 20:50:58 - __main__ - INFO - Visualisation pipeline completed successfully
+2026-09-16 20:50:58 - __main__ - INFO - ======================================================================
+2026-09-16 20:50:58 - __main__ - INFO - All visualizations saved to: visualisations/
