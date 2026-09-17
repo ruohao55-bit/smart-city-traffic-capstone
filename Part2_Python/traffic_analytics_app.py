@@ -1,11 +1,6 @@
 """
 Traffic Analytics CLI Application
 
-A command-line tool for querying and analyzing traffic patterns from the
-Metro Interstate Traffic Volume dataset.
-
-Usage:
-    python traffic_analytics_app.py <command> [arguments]
 
 Commands:
     query-time       Query traffic for a specific date/time
@@ -13,17 +8,20 @@ Commands:
     weekday-compare  Compare weekday and weekend traffic
     best-times       Find recommended (low-traffic) travel periods
     weather-impact   Analyze weather effects on traffic
-    help             Display help information
 """
 
 import pandas as pd
 import numpy as np
 import logging
 import sys
+import os
 from datetime import datetime, timedelta
 from typing import Optional, List, Dict, Tuple
 
 logger = logging.getLogger(__name__)
+
+# Get script directory
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 def configure_logging(log_file="pipeline.log"):
@@ -60,75 +58,6 @@ def load_dataset(filepath: str) -> Optional[pd.DataFrame]:
         return None
 
 
-def display_help():
-    """Display help information."""
-    help_text = """
-╔════════════════════════════════════════════════════════════════════════════╗
-║                    TRAFFIC ANALYTICS APPLICATION                           ║
-║                   Query and Analyze Traffic Patterns                       ║
-╚════════════════════════════════════════════════════════════════════════════╝
-
-AVAILABLE COMMANDS:
-
-1. query-time <YYYY-MM-DD> <HH:MM>
-   ────────────────────────────────────
-   Query traffic volume for a specific date and time.
-
-   Example: python traffic_analytics_app.py query-time 2016-01-15 14:30
-
-   Output: Shows traffic volume, weather, temperature, congestion level
-
-
-2. peak-hours [--limit N]
-   ──────────────────────
-   Identify the highest traffic periods (hours and days).
-
-   Examples:
-   - python traffic_analytics_app.py peak-hours
-   - python traffic_analytics_app.py peak-hours --limit 10
-
-   Output: Top N hours with highest average traffic
-
-
-3. weekday-compare
-   ────────────────
-   Compare traffic patterns between weekdays and weekends.
-
-   Example: python traffic_analytics_app.py weekday-compare
-
-   Output: Statistics comparison, peak hours for each day type
-
-
-4. best-times [--max-volume N]
-   ─────────────────────────────
-   Recommend best times to travel (lowest traffic periods).
-
-   Examples:
-   - python traffic_analytics_app.py best-times
-   - python traffic_analytics_app.py best-times --max-volume 2000
-
-   Output: Hours and days with traffic below threshold
-
-
-5. weather-impact
-   ───────────────
-   Analyze how different weather conditions affect traffic.
-
-   Example: python traffic_analytics_app.py weather-impact
-
-   Output: Average traffic by weather type, rankings
-
-
-6. help
-   ────
-   Display this help message.
-
-═══════════════════════════════════════════════════════════════════════════════
-"""
-    print(help_text)
-    logger.info("Help command invoked")
-
-
 def query_by_time(df: pd.DataFrame, date_str: str, time_str: str) -> None:
     """
     Query traffic for a specific date and time.
@@ -147,7 +76,7 @@ def query_by_time(df: pd.DataFrame, date_str: str, time_str: str) -> None:
     except ValueError as e:
         error_msg = f"Invalid date/time format. Use YYYY-MM-DD for date and HH:MM for time."
         logger.error(f"User input error: {error_msg}")
-        print(f"\n❌ Error: {error_msg}")
+        print(f"\n Error: {error_msg}")
         return
 
     # Extract hour and date for querying
@@ -163,7 +92,7 @@ def query_by_time(df: pd.DataFrame, date_str: str, time_str: str) -> None:
     if matching_records.empty:
         # Try to find closest records
         logger.warning(f"No exact match found for {query_datetime}")
-        print(f"\n⚠️  No records found for {date_str} {time_str}")
+        print(f"\n No records found for {date_str} {time_str}")
 
         # Find records within ±2 hours on the same date
         nearby_records = df[
@@ -315,7 +244,7 @@ def recommend_travel_times(df: pd.DataFrame, max_volume: int = 2000) -> None:
     low_traffic_hours = low_traffic_hours.sort_values(ascending=False)
 
     if low_traffic_hours.empty:
-        print(f"⚠️  No hours with traffic below {max_volume} vehicles found.")
+        print(f" No hours with traffic below {max_volume} vehicles found.")
         logger.warning(f"No records found with traffic volume < {max_volume}")
         return
 
@@ -409,12 +338,11 @@ SELECT AN OPTION:
 3. Compare Weekday vs Weekend
 4. Find Best Times to Travel
 5. Analyze Weather Impact
-6. View Help
 0. Exit
 
 ════════════════════════════════════════════════════════════════════════════""")
 
-        choice = input("\nEnter your choice (0-6): ").strip()
+        choice = input("\nEnter your choice (0-5): ").strip()
 
         if choice == "1":
             menu_query_time(df)
@@ -426,15 +354,13 @@ SELECT AN OPTION:
             menu_best_times(df)
         elif choice == "5":
             menu_weather_impact(df)
-        elif choice == "6":
-            menu_help()
         elif choice == "0":
             logger.info("Application closed by user from menu")
             print("\n✓ Thank you for using Traffic Analytics Application!")
             print("  See traffic_app.log for detailed activity log.\n")
             break
         else:
-            print("\n❌ Invalid choice. Please enter 0-6.")
+            print("\n Invalid choice. Please enter 0-5.")
             input("Press ENTER to continue...")
 
 
@@ -452,13 +378,13 @@ def menu_query_time(df: pd.DataFrame) -> None:
             return
         if len(date_str) == 10 and date_str.count('-') == 2:
             break
-        print("❌ Invalid format. Use YYYY-MM-DD")
+        print("Invalid format. Use YYYY-MM-DD")
 
     while True:
         time_str = input("Enter time (HH:MM) in 24-hour format: ").strip()
         if len(time_str) == 5 and time_str.count(':') == 1:
             break
-        print("❌ Invalid format. Use HH:MM")
+        print("Invalid format. Use HH:MM")
 
     query_by_time(df, date_str, time_str)
     input("\nPress ENTER to continue...")
@@ -474,9 +400,9 @@ def menu_peak_hours(df: pd.DataFrame) -> None:
             limit = int(limit_str) if limit_str else 10
             if limit > 0:
                 break
-            print("❌ Please enter a positive number.")
+            print("Please enter a positive number.")
         except ValueError:
-            print("❌ Invalid input. Please enter a number.")
+            print("Invalid input. Please enter a number.")
 
     identify_peak_hours(df, limit)
     input("\nPress ENTER to continue...")
@@ -500,9 +426,9 @@ def menu_best_times(df: pd.DataFrame) -> None:
             max_volume = int(max_vol_str) if max_vol_str else 2000
             if max_volume > 0:
                 break
-            print("❌ Please enter a positive number.")
+            print("Please enter a positive number.")
         except ValueError:
-            print("❌ Invalid input. Please enter a number.")
+            print("Invalid input. Please enter a number.")
 
     recommend_travel_times(df, max_volume)
     input("\nPress ENTER to continue...")
@@ -516,53 +442,6 @@ def menu_weather_impact(df: pd.DataFrame) -> None:
     input("\nPress ENTER to continue...")
 
 
-def menu_help() -> None:
-    """Interactive help display."""
-    import os
-
-    logger.info("Help accessed from menu")
-
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-    print("""
-╔════════════════════════════════════════════════════════════════════════════╗
-║                    COMMAND DESCRIPTIONS                                    ║
-╚════════════════════════════════════════════════════════════════════════════╝
-
-1. QUERY TRAFFIC BY DATE/TIME
-   Find traffic information for a specific date and time.
-   Returns: Volume, weather, temperature, congestion level
-
-2. FIND PEAK TRAFFIC HOURS
-   Shows the highest traffic periods with statistics.
-   Returns: Top hours ranked by average traffic volume
-
-3. COMPARE WEEKDAY VS WEEKEND
-   Compare traffic patterns between weekdays and weekends.
-   Returns: Statistics and peak hours for each day type
-
-4. FIND BEST TIMES TO TRAVEL
-   Recommend lowest traffic times to travel.
-   Returns: Hours and days with traffic below threshold
-
-5. ANALYZE WEATHER IMPACT
-   See how weather conditions affect traffic.
-   Returns: Traffic volume by weather type
-
-════════════════════════════════════════════════════════════════════════════
-
-KEY INSIGHTS:
-  ✓ Peak traffic: 16:00 (4 PM) with ~5,664 vehicles
-  ✓ Weekday traffic: 37.4% higher than weekends
-  ✓ Best travel time: 04:00 AM (lowest traffic)
-  ✓ Data period: 2012-10-02 to 2018-09-30
-
-════════════════════════════════════════════════════════════════════════════
-""")
-
-    input("Press ENTER to return to menu...")
-
-
 def query_by_time(df: pd.DataFrame, date_str: str, time_str: str) -> None:
     """Query traffic for a specific date and time."""
     logger.info(f"Command invoked: query-time with date={date_str}, time={time_str}")
@@ -573,7 +452,7 @@ def query_by_time(df: pd.DataFrame, date_str: str, time_str: str) -> None:
     except ValueError:
         error_msg = f"Invalid date/time format. Use YYYY-MM-DD for date and HH:MM for time."
         logger.error(f"User input error: {error_msg}")
-        print(f"\n❌ Error: {error_msg}")
+        print(f"\n Error: {error_msg}")
         return
 
     hour = query_datetime.hour
@@ -586,7 +465,7 @@ def query_by_time(df: pd.DataFrame, date_str: str, time_str: str) -> None:
 
     if matching_records.empty:
         logger.warning(f"No exact match found for {query_datetime}")
-        print(f"\n⚠️  No records found for {date_str} {time_str}")
+        print(f"\n No records found for {date_str} {time_str}")
 
         nearby_records = df[
             (df['date_time'].dt.date == query_date) &
@@ -631,9 +510,10 @@ def main():
     logger.info("=" * 80)
 
     # Load dataset
-    df = load_dataset("Metro_Interstate_Traffic_Volume_features.csv")
+    features_file = os.path.join(SCRIPT_DIR, "Metro_Interstate_Traffic_Volume_features.csv")
+    df = load_dataset(features_file)
     if df is None:
-        print("❌ Failed to load dataset. Cannot proceed.")
+        print("Failed to load dataset. Cannot proceed.")
         logger.error("Dataset loading failed. Application exiting.")
         sys.exit(1)
 
@@ -648,14 +528,11 @@ def main():
 
     # Route commands
     try:
-        if command == "help":
-            display_help()
-
-        elif command == "query-time":
+        if command == "query-time":
             if len(sys.argv) < 4:
                 error_msg = "query-time requires both date and time arguments"
                 logger.error(f"User input error: {error_msg}")
-                print(f"\n❌ Error: {error_msg}")
+                print(f"\n Error: {error_msg}")
                 print("Usage: python traffic_analytics_app.py query-time <YYYY-MM-DD> <HH:MM>\n")
                 sys.exit(1)
 
@@ -671,7 +548,7 @@ def main():
                     limit = int(sys.argv[limit_idx + 1])
                 except (IndexError, ValueError):
                     logger.error("Invalid --limit value. Using default.")
-                    print("⚠️  Invalid --limit value. Using default (10).")
+                    print(" Invalid --limit value. Using default (10).")
 
             identify_peak_hours(df, limit)
 
@@ -686,7 +563,7 @@ def main():
                     max_volume = int(sys.argv[vol_idx + 1])
                 except (IndexError, ValueError):
                     logger.error("Invalid --max-volume value. Using default.")
-                    print("⚠️  Invalid --max-volume value. Using default (2000).")
+                    print(" Invalid --max-volume value. Using default (2000).")
 
             recommend_travel_times(df, max_volume)
 
@@ -694,9 +571,9 @@ def main():
             analyze_weather_impact(df)
 
         else:
-            error_msg = f"Unknown command: {command}. Use 'help' to see available commands."
+            error_msg = f"Unknown command: {command}. Available: query-time, peak-hours, weekday-compare, best-times, weather-impact"
             logger.error(f"User input error: {error_msg}")
-            print(f"\n❌ Error: {error_msg}\n")
+            print(f"\n Error: {error_msg}\n")
             sys.exit(1)
 
         logger.info(f"Command '{command}' completed successfully")
@@ -705,7 +582,7 @@ def main():
     except Exception as e:
         error_msg = f"An error occurred: {str(e)}"
         logger.error(error_msg, exc_info=False)
-        print(f"\n❌ Error: {error_msg}\n")
+        print(f"\n Error: {error_msg}\n")
         sys.exit(1)
 
 
