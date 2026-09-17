@@ -225,3 +225,14 @@ Feature-engineered data saved to Metro_Interstate_Traffic_Volume_features.csv
 2026-09-16 20:50:58 - __main__ - INFO - Visualisation pipeline completed successfully
 2026-09-16 20:50:58 - __main__ - INFO - ======================================================================
 2026-09-16 20:50:58 - __main__ - INFO - All visualizations saved to: visualisations/
+2026-09-17 21:05:51 - __main__ - INFO - ================================================================================
+2026-09-17 21:05:51 - __main__ - INFO - Traffic Analytics Application Started
+2026-09-17 21:05:51 - __main__ - INFO - ================================================================================
+2026-09-17 21:05:51 - __main__ - INFO - Successfully loaded dataset: C:\Users\ruohao_gan\Desktop\Capstone\Part2_Python\Metro_Interstate_Traffic_Volume_features.csv
+2026-09-17 21:05:51 - __main__ - ERROR - An error occurred: 'charmap' codec can't encode characters in position 2-79: character maps to <undefined>
+2026-09-17 21:06:16 - __main__ - INFO - ================================================================================
+2026-09-17 21:06:16 - __main__ - INFO - Traffic Analytics Application Started
+2026-09-17 21:06:16 - __main__ - INFO - ================================================================================
+2026-09-17 21:06:16 - __main__ - INFO - Successfully loaded dataset: C:\Users\ruohao_gan\Desktop\Capstone\Part2_Python\Metro_Interstate_Traffic_Volume_features.csv
+2026-09-17 21:06:16 - __main__ - INFO - Help command invoked
+2026-09-17 21:06:16 - __main__ - INFO - Command 'help' completed successfully
