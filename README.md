@@ -1,4 +1,4 @@
-# Metro Interstate Traffic Volume - Capstone Project
+# Smart City Traffic Intelligence: From Data Analytics to AI-Powered Mobility - Capstone Project
 
 A complete data science pipeline analyzing traffic patterns using SQL, Python, and machine learning with MLOps, deployment, and monitoring.
 
