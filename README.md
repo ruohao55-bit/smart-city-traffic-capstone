@@ -7,8 +7,10 @@ A complete data science pipeline analyzing traffic patterns using SQL, Python, a
 ```
 Capstone/
 ├── Part1_Data_analytics/          # BI & Statistical Analysis
+│   ├── SQL/                       # Analysis queries
 │   ├── Capstone Part 1.pbix       # Power BI dashboard
-│   └── SQL/                       # Analysis queries
+│   ├── statistics/			       #Probability & Conditional Probability
+│   └── insights_report.pdf                   
 │
 ├── Part2_Python/                  # Data Engineering Pipeline
 │   ├── pipeline.py                # Data cleaning
@@ -124,54 +126,25 @@ python deployment_api.py
 - `06_task3_deep_learning.ipynb` - Neural network with SHAP explanations
 - `07_task4_quantization.ipynb` - Model optimization for edge deployment
 
+### Models
+- `models/` - Trained model artifacts
+
 ### Recommendation System
 - `08_task5_recommendation_system.ipynb` - Optimal travel time suggestions
 
 ### MLOps & Deployment
 - `09_task6_mlops_simulation.ipynb` - Model versioning & experiment tracking
-- `10_task6_deployment_monitoring.ipynb` - Drift detection & alerting dashboard
-- `deployment_api.py` - FastAPI production server
 
 ### Reports & Tracking
+- `10_task6_deployment_monitoring.ipynb` - Drift detection & alerting dashboard
+- `deployment_api.py` - FastAPI production server
 - `responsible_ai_report.pdf` - Bias/fairness analysis & governance framework
-- `mlflow.db` - SQLite database for experiment results
-- `models/` - Trained model artifacts
-- `data/` - Preprocessed datasets
 
 ## Data Summary
 
-- **Dataset:** Metro Interstate Traffic Volume (Minneapolis-St. Paul)
+- **Dataset:** Traffic Volume
 - **Time Range:** Oct 2012 - Sep 2018
 - **Records:** 48,187 hourly observations
 - **Target:** Traffic volume prediction
-
-## Key Results
-
-| Task | Best Model | Score |
-|------|-----------|-------|
-| Classification | Random Forest | AUC-ROC: 0.89 |
-| Regression | Random Forest | R²: 0.74 |
-| Deep Learning | Neural Network | R²: 0.88 |
-| Quantized Model | TFLite INT8 | <2% accuracy loss |
-
-## Technologies
-
-- **Data Processing:** pandas, numpy, scikit-learn
-- **Visualization:** matplotlib, seaborn
-- **Deep Learning:** TensorFlow, Keras, SHAP
-- **MLOps:** MLflow, FastAPI
-- **Experiment Tracking:** SQLite, MLflow UI
-- **Database:** SQL Server, SQLite
-- **BI:** Power BI
-
-## Status
-
-✅ **All tasks complete**
-
-- Part 1: BI & Analysis ✅
-- Part 2: Data Engineering ✅
-- Part 3: ML & AI with MLOps ✅
-
-**Ready for review and deployment**
 
 **Last Updated:** September 17, 2026
